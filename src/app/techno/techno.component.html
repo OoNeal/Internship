@@ -1,0 +1,117 @@
+<mat-sidenav-container class="">
+  <mat-sidenav #sidenav class="sidenav" mode="side" position="end" opened="{{opened}}">
+    <mat-nav-list>
+      <a mat-list-item (click)="closeSidenav()">
+        <mat-icon color="warn">close</mat-icon>
+      </a>
+      <div class="sidenav_content">
+        <span class="sidenav_content_name title title_xl">{{ selectedTech?.name }}</span>
+        <p class="text padding">{{ selectedTech?.description }}</p>
+        <a href="{{ selectedTech?.link }}" target="_blank" class="link">En savoir plus</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div id="techno" class="techno margin">
+      <h2 class="title title_xl">Technologies et outils</h2>
+      <p class="text">
+        Vous trouverez ici la liste et l’explication de tous les éléments, outils, ressources, et technologies que j'ai
+        eu
+        l'occasion d'utiliser, d'explorer et de maîtriser durant mon alternance, que ce soit pour les projets auxquels
+        j'ai
+        participé, les défis que j'ai relevés ou les compétences que j'ai développées tout au long de cette expérience :
+      </p>
+      <h2 class="title title_xl techno_title">Front end</h2>
+      <h3 class="title title_xl_center">cliquez pour en savoir plus</h3>
+      <div class="techno_group">
+        <div class="techno_group_item duo" (click)="openSidenav('Angular')">
+          <img class="techno_group_item_image" src="assets/icons/angular.svg" alt="angular icon">
+          <h2>Angular</h2>
+        </div>
+        <div class="techno_group_item duo" (click)="openSidenav('Cypress')">
+          <img src="assets/icons/cypress.svg" alt="cypress icon">
+          <h2>Cypress</h2>
+        </div>
+      </div>
+      <div class="techno_group">
+        <div class="techno_group_item" (click)="openSidenav('HTML')">
+          <img src="assets/icons/html.svg" alt="html icon">
+          <h2>HTML</h2>
+        </div>
+        <div class="techno_group_item" (click)="openSidenav('SASS')">
+          <img src="assets/icons/sass.svg" alt="sass icon">
+          <h2>SASS</h2>
+        </div>
+        <div class="techno_group_item" (click)="openSidenav('TypeScript')">
+          <img src="assets/icons/typescript.svg" alt="typescript icon">
+          <h2>Typescript</h2>
+        </div>
+      </div>
+      <h2 class="title title_xl techno_title">Back end</h2>
+      <div class="techno_group">
+        <div class="techno_group_item duo" (click)="openSidenav('Java')">
+          <img src="assets/icons/java.svg" alt="java icon">
+          <h2>Java</h2>
+        </div>
+        <div class="techno_group_item duo" (click)="openSidenav('PHP')">
+          <img src="assets/icons/php.svg" alt="php icon">
+          <h2>PHP</h2>
+        </div>
+      </div>
+      <div class="techno_group">
+        <div class="techno_group_item duo" (click)="openSidenav('Spring')">
+          <img src="assets/icons/spring.svg" alt="spring icon">
+          <h2>Spring</h2>
+        </div>
+        <div class="techno_group_item duo" (click)="openSidenav('Symfony')">
+          <img src="assets/icons/symfony.svg" alt="symfony icon">
+          <h2>Symfony</h2>
+        </div>
+      </div>
+      <div class="techno_group">
+        <div class="techno_group_item" (click)="openSidenav('Hibernate')">
+          <img src="assets/icons/hibernate.svg" alt="hibernate icon">
+          <h2>Hibernate</h2>
+        </div>
+        <div class="techno_group_item" (click)="openSidenav('Quarkus')">
+          <img src="assets/icons/quarkus.svg" alt="quarkus icon">
+          <h2>Quarkus</h2>
+        </div>
+        <div class="techno_group_item" (click)="openSidenav('Doctrine')">
+          <img src="assets/icons/doctrine.svg" alt="doctrine icon">
+          <h2>Doctrine</h2>
+        </div>
+      </div>
+      <h2 class="title title_xl techno_title">Outils</h2>
+      <div class="techno_group">
+        <div class="techno_group_item" (click)="openSidenav('Jira')">
+          <img src="assets/icons/jira.svg" alt="jira icon">
+          <h2>Jira</h2>
+        </div>
+        <div class="techno_group_item" (click)="openSidenav('Gerrit')">
+          <img src="assets/icons/gerrit.svg" alt="gerrit icon">
+          <h2>Gerrit</h2>
+        </div>
+        <div class="techno_group_item" (click)="openSidenav('Git')">
+          <img src="assets/icons/git.svg" alt="git icon">
+          <h2>Git</h2>
+        </div>
+      </div>
+      <div class="techno_group">
+        <div class="techno_group_item" (click)="openSidenav('Jenkins')">
+          <img src="assets/icons/jenkins.svg" alt="jenkins icon">
+          <h2>Jenkins</h2>
+        </div>
+        <div class="techno_group_item" (click)="openSidenav('Teams')">
+          <img src="assets/icons/teams.svg" alt="teams icon">
+          <h2>Teams</h2>
+        </div>
+        <div class="techno_group_item" (click)="openSidenav('Trello')">
+          <img src="assets/icons/trello.svg" alt="trello icon">
+          <h2>Trello</h2>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

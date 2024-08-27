@@ -1,0 +1,68 @@
+@use 'src/styles/variables.scss' as *;
+
+.header {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 0 40px;
+
+  width: 100vw;
+  height: 60px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.01) 0%, rgba(17, 12, 19, 0.15) 50%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid white;
+
+
+  &_img {
+    height: 60%;
+
+    & > img {
+      height: 100%;
+    }
+  }
+
+  &_menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &_label {
+      margin-right: 5px;
+    }
+
+    & .list {
+      cursor: pointer;
+
+    }
+
+    &_deroulant {
+      display: none;
+      height: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    &_item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+
+      &:hover {
+        display: flex;
+        font-weight: 400;
+        text-decoration: underline;
+        text-underline-offset: 5px;
+      }
+    }
+  }
+}

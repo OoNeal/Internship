@@ -1,0 +1,392 @@
+<div id="cypress" class="cypress">
+  <div class="cypress_banner">
+    <h1 class="cypress_banner_text title title_xxl">Cypress</h1>
+  </div>
+  <div class="cypress_container margin">
+    <h2 class="title title_xl">Contexte</h2>
+    <div class="text">
+      <p>
+        L'intégration des tests Cypress a représenté une composante essentielle du travail réalisé au cours de mon
+        alternance chez EuroDNS. Ces tests ont joué un rôle crucial dans le processus de CI/CD (Continuous
+        Integration/Continuous Deployment), garantissant la robustesse et la fiabilité du code à chaque étape du
+        développement. Chaque jour, les tests Cypress sont exécutés automatiquement via une pipeline Jenkins, permettant
+        d'avoir une vision d'ensemble sur les éventuels dysfonctionnements des différentes pages. Grâce à ce processus,
+        les
+        équipes peuvent apporter des correctifs rapidement, minimisant ainsi l'impact sur l'expérience utilisateur.
+      </p>
+      <p>
+        Le site web d'EuroDNS étant régulièrement mis à jour, il est impératif que les fonctionnalités soient testées de
+        manière efficace pour éviter toute régression lors des déploiements. Ce besoin est particulièrement crucial lors
+        de la création et de la migration de la version Angular, y compris la transition vers Angular 17. Les
+        modifications fréquentes effectuées par les développeurs introduisent des complexités supplémentaires, qui
+        doivent
+        être gérées pour assurer une expérience utilisateur fluide, même en présence d'erreurs mineures ou majeures.
+      </p>
+    </div>
+    <h2 class="title title_xl">Développement</h2>
+    <h3 class="title title_l">Création initiale</h3>
+    <div class="text">
+      <p>
+        Bien que j'aie déjà développé des tests CI/CD avec Cypress durant mon cursus, cette expérience ne m'avait pas
+        permis d'explorer cette technologie de manière approfondie. Lors de ma première semaine chez EuroDNS, j'ai donc
+        pris le temps de me renseigner sur le fonctionnement de Cypress en consultant sa documentation. J'ai également
+        pu
+        m'appuyer sur les tests existants dans le projet pour comprendre leur structure et les conventions à suivre.
+      </p>
+      <p>
+        L'architecture d'un projet Cypress est conçue pour organiser les tests de manière claire et structurée,
+        facilitant
+        ainsi leur maintenance et leur évolutivité :
+      </p>
+    </div>
+
+    <div class="white_box cypress_container_box">
+      <h3 class="title title_l">Structure générale</h3>
+      <pre>
+        cypress/
+        ├── fixtures/
+        │   └── example.json
+        ├── integration/
+        │   ├── examples/
+        │   │   └── example.spec.js
+        │   └── custom-tests/
+        │       └── my_test.spec.js
+        ├── plugins/
+        │   └── index.js
+        ├── support/
+        │   ├── commands.js
+        │   ├── index.js
+        │   └── custom-commands.js
+      </pre>
+      <h3 class="title title_l">Détail des dossiers et fichiers</h3>
+      <div class="cypress_container_box_text">
+        <h3 class="bold">Dossier Cypress</h3>
+        <p class="text">Ce dossier racine contient tous les fichiers et dossiers liés aux tests Cypress.</p>
+
+        <h3 class="bold">Dossier Fixtures</h3>
+        <p class="text">Ce dossier contient des fichiers de données statiques au format JSON ou autres formats, utilisés
+          pour simuler
+          des réponses de l'API ou pour fournir des données constantes aux tests.</p>
+        <ul>
+          <li class="file">example.json : Exemple de fichier JSON utilisé pour stocker des données que les tests peuvent
+            consommer.
+          </li>
+        </ul>
+        <h3 class="bold">Dossier Intégration</h3>
+        <p class="text">C'est le dossier principal pour les fichiers de tests (spécifications). Chaque fichier .spec.js
+          correspond à une suite de tests pour une fonctionnalité spécifique.</p>
+        <ul>
+          <li class="folder">examples/ : Contient des exemples de tests fournis par Cypress lors de l'initialisation.
+          </li>
+          <li class="folder">custom-tests/ : Dossier personnalisé où sont stockés vos tests spécifiques. Par exemple,
+            my_test.spec.js
+            pourrait contenir des tests pour une fonctionnalité particulière.
+          </li>
+        </ul>
+
+        <h3 class="bold">Dossier Plugins</h3>
+        <p class="text">Ce dossier est destiné à l'extension des fonctionnalités de Cypress via des plugins.</p>
+        <ul>
+          <li class="file">index.js : Ce fichier permet de modifier ou d'étendre les fonctionnalités de Cypress à
+            travers l'utilisation de
+            plugins. Il est automatiquement chargé avant l'exécution des tests.
+          </li>
+        </ul>
+
+        <h3 class="bold">Dossier Support</h3>
+        <p class="text">Le dossier support est utilisé pour centraliser les configurations globales, les commandes
+          personnalisées, et
+          les scripts de configuration qui doivent être exécutés avant vos tests.</p>
+        <ul>
+          <li class="file">commands.js : Ce fichier contient des commandes personnalisées que vous pouvez définir pour
+            réutiliser des actions
+            fréquentes dans vos tests.
+          </li>
+          <li class="file">index.js : Chargé automatiquement avant chaque fichier de test, ce fichier est idéal pour
+            inclure des configurations
+            globales ou des comportements communs.
+          </li>
+          <li class="file">custom-commands.js : Fichier optionnel pour séparer et organiser les commandes
+            personnalisées.
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="title title_l">Fichier de configuration global</h3>
+      <p class="text">Le fichier cypress.json se trouve à la racine du projet (en dehors du dossier cypress/). Il
+        contient la configuration globale du projet Cypress, comme l'URL de base, les paramètres d'environnement, ou les
+        options de comportement des tests.
+      </p>
+
+      <div class="terminal">
+        <div class="terminal_screen">
+          <pre><code>
+&#123;
+  <span class="terminal_screen_key">"baseUrl"</span>: <span
+            class="terminal_screen_string">"http://localhost:3000"</span>,
+  <span class="terminal_screen_key">"userName"</span>: <span class="terminal_screen_string">"cypress"</span>,
+  <span class="terminal_screen_key">"userMail"</span>: <span class="terminal_screen_string">"cypress@eurodns.com"</span>,
+  <span class="terminal_screen_key">"userPassword"</span>: <span class="terminal_screen_string">"P@55w0rd"</span>,
+  <span class="terminal_screen_key">"env"</span>:&#123;
+  <span class="terminal_screen_key">"apiUrl"</span>: <span
+            class="terminal_screen_string">"http://localhost:4000/api"</span>
+  }
+}
+          </code></pre>
+        </div>
+      </div>
+
+      <h3 class="title title_l">Autres composants optionnels</h3>
+      <ul class="cypress_container_list">
+        <li>cypress.env.json : Un fichier optionnel pour stocker des variables d'environnement spécifiques
+          à Cypress, séparément des configurations dans cypress.json.
+        </li>
+        <li>cypress/plugins/index.js : Pour configurer des plugins qui étendent les fonctionnalités de Cypress (ex.
+          intercepter les requêtes réseau, modifier les fichiers en cours de test, etc.).
+        </li>
+        <li>node_modules/ : Bien que ce dossier ne soit pas spécifique à Cypress, il contient les dépendances
+          installées, y compris Cypress lui-même et tout plugin ou bibliothèque supplémentaire utilisée dans les tests.
+        </li>
+      </ul>
+    </div>
+    <p class="text">
+      Après avoir pris connaissance du fonctionnement de Cypress, j'ai débuté la création des tests pour la gestion des
+      domaines clients. Mon objectif était de vérifier qu’un domaine acheté apparaissait correctement dans sa liste,
+      qu’ils soient : actif, ait besoin d’être renouvelé, ait bientôt expiré ou soit en quarantaine. Les différentes
+      informations se devaient d’être exactes, visibles et configurables si nécessaire. Au départ, toutes mes tâches
+      étaient suivies sur Trello, une solution simple qui ne nécessite pas d'accès particulier, contrairement à Jira.
+    </p>
+
+    <div class="screen">
+      <img src="assets/images/trello.jpg" alt="trello dashboard" class="screen_image">
+      <p class="screen_caption">Tableau de bord de l’application Trello</p>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal_screen">
+          <pre><code>
+<span class="terminal_screen_key">context</span>(<span
+            class="terminal_screen_string">'Purchase products from craft'</span>, () => &#123;
+            <span class="terminal_screen_key">beforeEach</span>(() => &#123;
+        cy.<span class="terminal_screen_key">intercept</span>(<span class="terminal_screen_string">'GET'</span>, <span
+            class="terminal_screen_string">'https://beta-my.eurodns.com/**'</span>).as(<span
+            class="terminal_screen_string">'beta-my'</span>);
+        cy.<span class="terminal_screen_key"><span class="terminal_screen_key">visit</span></span>(<span
+            class="terminal_screen_string">'https://beta-my.eurodns.com/'</span>);
+    });
+
+    it(<span class="terminal_screen_string">'Update invoice profile'</span>, () => &#123;
+        let randomNumber = cy.<span class="terminal_screen_key">getRandomNumber</span>();
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'invoice-profileName'</span>).<span
+            class="terminal_screen_key">clear</span>().<span class="terminal_screen_key">type</span>(<span
+            class="terminal_screen_string">'Update-Profile-Test-'</span> + randomNumber);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span
+            class="terminal_screen_string">'email'</span>).<span class="terminal_screen_key">clear</span>().<span
+            class="terminal_screen_key">type</span>(<span class="terminal_screen_string">'update@profile.com'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'firstName'</span>).<span
+            class="terminal_screen_key">clear</span>().<span class="terminal_screen_key">type</span>(<span
+            class="terminal_screen_string">'Update Profile'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'lastName'</span>).<span
+            class="terminal_screen_key">clear</span>().<span class="terminal_screen_key">type</span>(<span
+            class="terminal_screen_string">'Test'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'address1'</span>).<span
+            class="terminal_screen_key">clear</span>().<span class="terminal_screen_key">type</span>(<span
+            class="terminal_screen_string">'Update Address test'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span
+            class="terminal_screen_string">'zipCode'</span>).<span class="terminal_screen_key">clear</span>().<span
+            class="terminal_screen_key">type</span>(<span class="terminal_screen_string">'54321'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span
+            class="terminal_screen_string">'city'</span>).<span class="terminal_screen_key">clear</span>().<span
+            class="terminal_screen_key">type</span>(<span class="terminal_screen_string">'Paris'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'autocomplete-input'</span>).<span
+            class="terminal_screen_key">clear</span>().<span class="terminal_screen_key">type</span>(<span
+            class="terminal_screen_string">'Germany'</span>).click();
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span
+            class="terminal_screen_string">'phone-input-input'</span>).<span class="terminal_screen_key">clear</span>().<span
+            class="terminal_screen_key">type</span>(<span class="terminal_screen_string">'987654321'</span>);
+
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'invoice-profileName'</span>).<span
+            class="terminal_screen_key">should</span>(<span class="terminal_screen_string">'have.value'</span>, <span
+            class="terminal_screen_string">'Update-Profile-Test-'</span> + randomNumber);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span
+            class="terminal_screen_string">'email'</span>).<span class="terminal_screen_key">should</span>(<span
+            class="terminal_screen_string">'have.value'</span>, <span class="terminal_screen_string">'update@profile.com'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'firstName'</span>).<span
+            class="terminal_screen_key">should</span>(<span class="terminal_screen_string">'have.value'</span>, <span
+            class="terminal_screen_string">'Update Profile'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'lastName'</span>).<span
+            class="terminal_screen_key">should</span>(<span class="terminal_screen_string">'have.value'</span>, <span
+            class="terminal_screen_string">'Test'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'address1'</span>).<span
+            class="terminal_screen_key">should</span>(<span class="terminal_screen_string">'have.value'</span>, <span
+            class="terminal_screen_string">'Update Address test'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span
+            class="terminal_screen_string">'zipCode'</span>).<span class="terminal_screen_key">should</span>(<span
+            class="terminal_screen_string">'have.value'</span>, <span class="terminal_screen_string">'54321'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span
+            class="terminal_screen_string">'city'</span>).<span class="terminal_screen_key">should</span>(<span
+            class="terminal_screen_string">'have.value'</span>, <span class="terminal_screen_string">'Paris'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span class="terminal_screen_string">'autocomplete-input'</span>).<span
+            class="terminal_screen_key">should</span>(<span class="terminal_screen_string">'have.value'</span>, <span
+            class="terminal_screen_string">'Germany'</span>);
+        cy.<span class="terminal_screen_key">getByDataCy</span>(<span
+            class="terminal_screen_string">'phone-input-input'</span>).<span
+            class="terminal_screen_key">should</span>(<span class="terminal_screen_string">'have.value'</span>, <span
+            class="terminal_screen_string">'987654321'</span>);
+    });
+});
+          </code></pre>
+      </div>
+    </div>
+
+    <div>
+      <p class="text">Ce test Cypress est conçu pour vérifier la mise à jour du profil de facturation sur le site
+        EuroDNS. Voici une explication détaillée du processus :</p>
+      <ul class="cypress_container_test">
+        <li>Contexte et Préparation :</li>
+        <ul>
+          <li>Le context "Purchase products from craft" regroupe les tests qui concernent l'achat de produits.</li>
+          <li>La fonction beforeEach() est exécutée avant chaque test (it). Ici, elle intercepte toutes les requêtes GET
+            vers https://beta-my.eurodns.com/** et associe cet alias à @beta-my. Elle ouvre ensuite la page d'accueil du
+            site.
+          </li>
+        </ul>
+        <li>Mise à Jour des Champs :</li>
+        <ul>
+          <li>
+            Le test it('Update invoice profile') commence par générer un nombre aléatoire (randomNumber) pour créer un
+            identifiant unique dans le nom du profil, ce qui évite les conflits entre différents tests.
+          </li>
+          <li>
+            Les champs de profil de facturation (invoice-profileName, email, firstName, etc.) sont ensuite mis à jour en
+            utilisant la méthode cy.getByDataCy(), qui sélectionne les éléments par l'attribut data-cy (un attribut
+            personnalisé utilisé pour identifier les éléments dans les tests Cypress).
+          </li>
+          <li>
+            La méthode clear() vide les champs avant d'utiliser type() pour entrer de nouvelles valeurs.
+          </li>
+        </ul>
+        <li>Vérification des Mises à Jour :</li>
+        <ul>
+          <li>
+            Après avoir rempli les champs, le test vérifie que les valeurs ont été correctement mises à jour en
+            utilisant
+            la méthode should('have.value', ...).
+          </li>
+        </ul>
+        <li>Pourquoi ces vérifications sont importantes :</li>
+        <ul>
+          <li>
+            Les assertions garantissent que les champs sont correctement mis à jour et affichent les nouvelles
+            informations, ce qui est essentiel pour la fiabilité des tests. Si un champ ne contient pas la valeur
+            attendue, le test échouera, indiquant un problème potentiel dans l'application ou le test lui-même.
+          </li>
+        </ul>
+      </ul>
+      <p class="text">
+        Ce test est un bon exemple de test end-to-end, où Cypress simule un utilisateur qui interagit avec
+        une interface web, met à jour des informations, puis vérifie que ces mises à jour sont bien prises en
+        compte.
+      </p>
+    </div>
+
+    <div class="screen">
+      <img src="assets/images/cypress_test.jpg" alt="cypress test" class="screen_image">
+      <p class="screen_caption">Interface Cypress d’exécution des tests</p>
+    </div>
+    <h2 class="title title_xl">Difficultés rencontrées</h2>
+    <p class="text">
+      La principale difficulté rencontrée durant ce projet était de maintenir la stabilité des tests face
+      aux nombreux commits des autres développeurs, qui travaillaient sur de nouvelles fonctionnalités ou modifiaient
+      le
+      code existant. Ces changements avaient souvent un impact sur les tests, nécessitant des ajustements constants
+      pour
+      éviter les faux positifs ou les échecs. En plus de cela, la nature dynamique et asynchrone de l'affichage dans
+      Angular a introduit des défis supplémentaires.
+    </p>
+    <h3 class="title title_l">Problèmes liés à l'affichage dynamique et asynchrone d'Angular</h3>
+    <p class="text">
+      Angular, surtout dans ses versions récentes comme Angular 17, repose beaucoup sur le rendu dynamique et
+      asynchrone
+      des composants. Cela signifie que le contenu d'une page peut changer en fonction de l'état ou des actions des
+      utilisateurs, et ces changements ne se produisent pas toujours de manière immédiate ou prévisible.
+    </p>
+
+    <ul class="cypress_container_list">
+      <li>
+        Détection de changements : Angular utilise un mécanisme de détection de changements (change detection) pour
+        mettre
+        à jour l'interface utilisateur lorsque les données sous-jacentes changent. Cependant, ce processus n'est pas
+        toujours synchrone, et les tests end-to-end comme ceux de Cypress doivent souvent attendre que l'interface
+        soit
+        complètement mise à jour avant de procéder à la vérification des éléments. Cela a nécessité l'utilisation de
+        méthodes telles que cy.wait() ou cy.get().should() pour synchroniser les tests avec l'interface utilisateur,
+        ce
+        qui peut parfois être délicat à gérer si les délais ne sont pas bien calibrés.
+      </li>
+      <li>
+        Rendu conditionnel et dynamique : Dans certaines situations, les éléments de l'interface sont rendus de
+        manière
+        conditionnelle ou asynchrone, en fonction des données récupérées via des appels API ou des événements
+        utilisateurs. Cela peut poser des problèmes pour Cypress, car les éléments que les tests cherchent à interagir
+        ou
+        vérifier peuvent ne pas être présents immédiatement dans le DOM. Pour pallier à cela, il a souvent été
+        nécessaire
+        d'attendre explicitement la présence des éléments en question avant de poursuivre le test.
+      </li>
+    </ul>
+    <h3 class="title title_l">Problèmes liés à l'affichage dynamique et asynchrone d'Angular</h3>
+    <div class="text">
+      <p>
+        Une autre difficulté majeure a été liée à la gestion des données de test, notamment pour les domaines. Dans un
+        environnement de production ou de préproduction, il n'était pas toujours possible d'avoir un ensemble de
+        domaines
+        spécifiques disponibles pour les tests, et les données réelles étaient souvent insuffisantes pour couvrir tous
+        les
+        cas de test nécessaires.
+      </p>
+      <p>
+        Pour résoudre ce problème, il a été nécessaire de développer une méthode spécifique dans le backend Java pour
+        générer des domaines de manière programmatique. Cette méthode permettait de créer des domaines sur demande,
+        directement via des appels API, afin de s'assurer que les tests disposaient toujours des données nécessaires.
+        Cette solution a permis de :
+      </p>
+    </div>
+    <ul class="cypress_container_list">
+      <li>
+        Éviter les dépendances aux données réelles : En créant des domaines spécifiquement pour les tests, il était
+        possible de garantir que les scénarios de test pouvaient être exécutés de manière prévisible, sans dépendre de
+        l'état des données réelles.
+      </li>
+      <li>
+        Assurer la répétabilité des tests : En générant des domaines à la demande, chaque test pouvait démarrer dans
+        un
+        état connu, ce qui est essentiel pour la répétabilité et la fiabilité des tests automatisés.
+      </li>
+    </ul>
+    <div class="screen">
+      <img src="assets/images/eurodns_domain.jpg" alt="eurodns domain" class="screen_image">
+      <p class="screen_caption">Liste de différents domaines actifs créés lors des tests</p>
+    </div>
+    <h3 class="title title_l">Impact sur la stabilité des tests</h3>
+    <p class="text">
+      Malgré ces efforts, la stabilité des tests était parfois ébranlée par des différences
+      d'environnement, telles que les versions de logiciels tiers qui variaient d'une machine à l'autre. Les tests qui
+      fonctionnaient parfaitement sur une machine pouvaient échouer sur une autre en raison de légères différences dans
+      la configuration ou les versions des composants utilisés. Cela a nécessité une standardisation rigoureuse des
+      environnements de test et une attention constante aux détails pour minimiser les impacts de ces variations.
+    </p>
+    <h3 class="title title_l">Conclusion</h3>
+    <p class="text">
+      L’implémentation des tests Cypress a été un élément clé pour assurer la qualité et la fiabilité des déploiements
+      continus chez EuroDNS. L'intégration de ces tests, bien que complexe, a été essentielle pour garantir la qualité
+      du développement. Malgré les défis techniques, notamment lors de la migration vers Angular 17 et la gestion des
+      données de test, ces tests ont permis de sécuriser le développement et de réduire les risques de régression. Ces
+      défis ont été surmontés grâce à des ajustements continus et des innovations spécifiques, comme la génération
+      automatique de domaines via le backend, stabilisant ainsi les tests et assurant une meilleure fiabilité dans le
+      processus de CI/CD. Cette expérience m’a permis de développer des compétences avancées en automatisation de tests
+      et en gestion des pipelines CI/CD, tout en contribuant directement à l’amélioration des processus de développement
+      de l’équipe.
+    </p>
+  </div>
+</div>

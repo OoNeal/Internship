@@ -1,0 +1,21 @@
+.group {
+  width: 100vw;
+  height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("../../assets/images/prensentation_backgroud.png");
+  background-size: cover;
+
+
+  &_text {
+    gap: 10px;
+  }
+
+  &_image {
+    height: 50px;
+  }
+}

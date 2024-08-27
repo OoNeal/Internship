@@ -1,0 +1,53 @@
+<div id="git" class="git margin">
+  <h2 class="title title_xxl">Les différentes branches git</h2>
+  <p>
+    Chez EuroDNS, comme dans de nombreux projets, les différentes branches Git jouent un rôle crucial dans la gestion
+    du cycle de développement, de tests et de déploiement. Voici un aperçu des principales branches Git utilisées :
+  </p>
+  <h3 class="title title_xl">Main</h3>
+  <ul>
+    <li><span class="bold">Description : </span>
+      La branche test (parfois appelée dev ou development) est dédiée au développement
+      actif.
+    </li>
+    <li><span class="bold">Utilisation : </span>
+      Les développeurs travaillent principalement sur cette branche pour développer de
+      nouvelles fonctionnalités ou apporter des corrections. Cette branche est souvent instable, car elle reçoit
+      fréquemment des commits avec des changements en cours de développement. Les tests initiaux sont effectués ici pour
+      valider les modifications. Une fois les fonctionnalités stables et validées dans cette branche, elles peuvent être
+      fusionnées dans preprod pour des tests plus approfondis
+    </li>
+  </ul>
+  <h3 class="title title_xl">Preprod</h3>
+  <ul>
+    <li><span class="bold">Description : </span>
+      La branche preprod est utilisée comme une étape intermédiaire avant le déploiement en production.
+    </li>
+    <li><span class="bold">Utilisation : </span>
+      Cette branche reçoit les modifications après qu'elles ont été testées dans des environnements de développement ou
+      de test, mais avant qu'elles ne soient fusionnées dans la branche main. Elle permet de simuler l'environnement de
+      production et de s'assurer que les nouvelles fonctionnalités ou correctifs fonctionnent correctement avant le
+      déploiement final. C'est également ici que sont effectués les tests d'acceptation utilisateur (UAT).
+    </li>
+    <li><span class="bold">Mon travail : </span>
+      Au cours de mon alternance, j'ai principalement travaillé sur la branche preprod, car mes accès par défaut
+      étaient limités à cette branche. Cela m'a permis de tester et valider les fonctionnalités dans un environnement
+      très proche de la production, en m'assurant que les modifications apportées répondaient aux exigences avant leur
+      fusion dans la branche main.
+    </li>
+
+  </ul>
+  <h3 class="title title_xl">Prod</h3>
+  <ul>
+    <li><span class="bold">Description : </span>
+      La branche main (parfois appelée master dans certains projets) est la branche principale du dépôt. Elle contient
+      la version stable du code qui est prête pour la production.
+    </li>
+    <li><span class="bold">Utilisation : </span>
+      Cette branche représente le code qui est en production, ou qui est sur le point de l'être. Seul le code testé,
+      validé, et prêt pour un déploiement peut être fusionné dans cette branche. Toute modification ici passe
+      généralement par des Pull Requests (PR) et nécessite des validations, comme des tests automatisés et des revues de
+      code.
+    </li>
+  </ul>
+</div>
