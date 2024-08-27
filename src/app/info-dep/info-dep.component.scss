@@ -1,0 +1,15 @@
+.info-dep {
+  padding: 60px 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  background-image: url("../../assets/images/info_dep.jpg");
+  background-position: center;
+  background-size: cover;
+
+  &_text {
+    text-shadow: 0 4px 5px rgba(0, 0, 0, 0.50);
+  }
+}

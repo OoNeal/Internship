@@ -1,0 +1,43 @@
+<div class="header">
+  <a href="#home" class="header_img">
+    <img src="assets/icons/logo.svg" alt="logo">
+  </a>
+  <nav class="header_menu">
+    <a href="#home" class="header_menu_item">Accueil</a>
+    <a href="#thanks" class="header_menu_item">Remerciements</a>
+    <a href="#intro" class="header_menu_item">Introduction</a>
+    <button mat-button [matMenuTriggerFor]="presentation" class="header_menu_item list">
+      <span class="header_menu_label">Présentation</span>
+      <img src="assets/icons/arrow_down.svg" alt="arrow_down" class="header_menu_item_img">
+    </button>
+    <mat-menu #presentation="matMenu">
+      <a mat-menu-item href="#group">Le groupe</a>
+      <a mat-menu-item href="#company">EuroDNS</a>
+      <a mat-menu-item href="#info-dep">Département informatique</a>
+      <a mat-menu-item href="#key">Concepts Clés</a>
+      <a mat-menu-item href="#techno">Technologies & Outils</a>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="method" class="header_menu_item list">
+      <span class="header_menu_label">Méthodologie</span>
+      <img src="assets/icons/arrow_down.svg" alt="arrow_down" class="header_menu_item_img">
+    </button>
+    <mat-menu #method="matMenu">
+      <a mat-menu-item href="#scrum">SCRUM</a>
+      <a mat-menu-item href="#sprint">Sprint</a>
+      <a mat-menu-item href="#poker">Poker planning</a>
+      <a mat-menu-item href="#benefits">Bénéfices</a>
+      <a mat-menu-item href="#git">Git</a>
+      <a mat-menu-item href="#day">Journée type</a>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="missions" class="header_menu_item list">
+      <span class="header_menu_label">Missions</span>
+      <img src="assets/icons/arrow_down.svg" alt="arrow_down" class="header_menu_item_img">
+    </button>
+    <mat-menu #missions="matMenu">
+      <a mat-menu-item href="#mission">Contexte</a>
+      <a mat-menu-item href="#cypress">Cypress</a>
+      <a mat-menu-item href="#fullstack">Fullstack</a>
+    </mat-menu>
+    <a href="#link" class="header_menu_item">Liens</a>
+  </nav>
+</div>

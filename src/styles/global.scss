@@ -1,0 +1,170 @@
+@use 'src/styles/variables.scss' as *;
+html, body {
+  scroll-behavior: smooth;
+
+  margin: 0;
+  padding: 0;
+
+  width: 100vw;
+
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -1%;
+  line-height: 1.5;
+  text-align: justify;
+  color: white;
+  background-color: $background-color;
+}
+
+[id] {
+  scroll-margin-top: 100px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+p, h1, h2, h3, h4, h5, h6, ul {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 300px;
+
+  background-image: url("../assets/images/backgrounds.png");
+  background-size: cover;
+}
+
+.margin {
+  margin: 0 60px;
+}
+
+.padding {
+  padding: 0 60px;
+}
+
+.gap {
+  gap: 60px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  text-indent: 50px;
+}
+
+.title {
+  width: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-indent: 0;
+
+  &_xxl {
+    font-size: 40px;
+    text-align: right;
+  }
+
+  &_xl {
+    font-size: 30px;
+
+    &_center {
+      text-align: center;
+    }
+  }
+
+  &_l {
+    font-size: 25px;
+  }
+}
+
+.mat-mdc-button:not(:disabled) {
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -1%;
+  color: white !important;
+}
+
+.white_box {
+  padding: 40px 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 30px;
+  border-bottom: 1px solid #FFF;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.01) 0%, rgba(17, 12, 19, 0.15) 50%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(20px);
+}
+
+.screen {
+  box-sizing: border-box;
+
+  padding: 20px 20px;
+
+  width: 60%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  border-radius: 40px;
+  border-top: 1px solid #FFF;
+  border-left: 1px solid #FFF;
+  background: linear-gradient(147deg, rgba(255, 255, 255, 0.20) 0%, rgba(242, 102, 193, 0.20) 99.95%);
+  backdrop-filter: blur(300px);
+
+  &_image {
+    width: 100%;
+    border-radius: 20px;
+  }
+}
+
+.terminal {
+  min-width: 40%;
+  padding-top: 30px;
+
+  background-color: #363636;
+  border-radius: 10px;
+
+  &_screen {
+    padding: 0 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #000;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    &_key {
+      color: #F266C1;
+      opacity: 0.8;
+    }
+
+    &_string {
+      color: #35F242;
+      opacity: 0.8;
+    }
+  }
+}

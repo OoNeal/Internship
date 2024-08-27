@@ -1,0 +1,32 @@
+.link {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  &_list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    &_item {
+
+      & > a {
+        text-decoration: underline;
+        transition: transform 0.3s ease;
+      }
+
+      & > a:hover {
+        color: rgba(150, 54, 191, 0.5);
+        transform: translateY(5px);
+      }
+    }
+  }
+}

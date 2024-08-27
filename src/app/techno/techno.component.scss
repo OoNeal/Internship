@@ -1,0 +1,90 @@
+.mat-drawer-container, .mat-drawer {
+  background: transparent;
+  color: white;
+}
+
+.sidenav {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 35%;
+  border-left: 1px solid #FFF;
+  background: linear-gradient(147deg, rgba(255, 255, 255, 0.10) 0%, rgba(242, 102, 193, 0.10) 100%);
+  backdrop-filter: blur(300px);
+
+  &_content {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    & > a {
+       transition: transform 0.3s ease;
+       text-decoration: underline;
+     }
+    & > a:hover {
+      color: rgba(150, 54, 191, 0.5);
+      transform: translateY(5px);
+    }
+
+    &_name {
+      margin-bottom: 20px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      color: white !important;
+    }
+  }
+}
+
+.techno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  &_title {
+    text-align: center;
+  }
+
+  &_group {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &_item {
+      width: 30%;
+      height: 120px;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+
+      text-transform: uppercase;
+
+      border-radius: 15px;
+      border-right: 1px solid #FFF;
+      border-bottom: 1px solid #FFF;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(300px);
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &_image {
+        height: 90px;
+      }
+
+      &.duo {
+        width: 45%;
+      }
+    }
+  }
+}
