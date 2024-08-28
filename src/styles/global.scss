@@ -1,8 +1,9 @@
 @use 'src/styles/variables.scss' as *;
+
 html, body {
   scroll-behavior: smooth;
 
-  margin: 0;
+  margin: 0 0 100px;
   padding: 0;
 
   width: 100vw;
@@ -33,6 +34,52 @@ p, h1, h2, h3, h4, h5, h6, ul {
   padding: 0;
 }
 
+span {
+ margin: 0 5px;
+}
+
+.mat-drawer-container, .mat-drawer {
+  background: transparent !important;
+  color: white !important;
+}
+
+.sidenav {
+  position: fixed !important;
+  top: 60px !important;
+  right: 0;
+  width: 35%;
+  border-left: 1px solid #FFF;
+  background: linear-gradient(147deg, rgba(255, 255, 255, 0.10) 0%, rgba(242, 102, 193, 0.10) 100%);
+  backdrop-filter: blur(300px);
+
+  &_content {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    & > a {
+      transition: transform 0.3s ease;
+      text-decoration: underline;
+    }
+
+    & > a:hover {
+      color: rgba(150, 54, 191, 0.5);
+      transform: translateY(5px);
+    }
+
+    &_name {
+      margin-bottom: 20px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      color: white !important;
+    }
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -56,6 +103,18 @@ p, h1, h2, h3, h4, h5, h6, ul {
 
 .bold {
   font-weight: 600;
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    color: rgba(150, 54, 191, 0.5);
+    transform: translateY(5px);
+  }
 }
 
 .text {
@@ -167,4 +226,9 @@ p, h1, h2, h3, h4, h5, h6, ul {
       opacity: 0.8;
     }
   }
+}
+
+.mat-drawer-container, .mat-drawer {
+  background: transparent;
+  color: white;
 }

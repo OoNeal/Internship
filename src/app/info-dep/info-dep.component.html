@@ -1,41 +1,64 @@
-<div id="info-dep" class="info-dep">
-  <div>
-    <h2 class="title title_xl">
-      Service informatique
-    </h2>
-    <h3 class="title title_l">Aspect humain</h3>
-    <div class="text">
-      <p>
-        EuroDNS emploie actuellement environ cinquante personnes, dont quinze travaillent au sein du
-        département informatique, réparties en trois équipes distinctes. Chaque équipe est dirigée par un chef d'équipe
-        qui assume également le rôle de Scrum Master*. Le CTO (Chief Technical Officer), M. Vincent Cisel, supervise
-        l'ensemble du département informatique.
-      </p>
-      <p>
-        Depuis sa création, EuroDNS a connu une croissance significative, avec une augmentation constante de son
-        effectif
-        depuis 2002. Cette expansion s'est récemment poursuivie avec l'embauche de nombreux nouveaux employés,
-        renforçant
-        ainsi les capacités de l'entreprise.
-      </p>
+<mat-sidenav-container class="">
+  <mat-sidenav #sidenav class="sidenav" mode="side" position="end" opened="{{opened}}">
+    <mat-nav-list>
+      <a mat-list-item (click)="closeSidenav()">
+        <mat-icon color="warn">close</mat-icon>
+      </a>
+      <div class="sidenav_content">
+        <span class="sidenav_content_name title title_xl">{{ selectedTech?.name }}</span>
+        <p class="text padding">{{ selectedTech?.description }}</p>
+        <a href="{{ selectedTech?.link }}" target="_blank" class="link">En savoir plus</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div id="info-dep" class="info-dep">
+      <div>
+        <h2 class="title title_xl">
+          Service informatique
+        </h2>
+        <h3 class="title title_l">Aspect humain</h3>
+        <div class="text">
+          <p>
+            EuroDNS emploie actuellement environ cinquante personnes, dont quinze travaillent au sein du
+            département informatique, réparties en trois équipes distinctes. Chaque équipe est dirigée par un chef
+            d'équipe
+            qui assume également le rôle de Scrum Master. Le CTO (Chief Technical Officer), M. Vincent Cisel, supervise
+            l'ensemble du département informatique.
+          </p>
+          <p>
+            Depuis sa création, EuroDNS a connu une croissance significative, avec une augmentation constante de son
+            effectif
+            depuis 2002. Cette expansion s'est récemment poursuivie avec l'embauche de nombreux nouveaux employés,
+            renforçant
+            ainsi les capacités de l'entreprise.
+          </p>
+        </div>
+      </div>
+      <div>
+        <h3 class="title title_l">Aspect technique</h3>
+        <div class="text">
+          <p>
+            EuroDNS a opté pour un environnement de travail en open space pour son équipe informatique. Cette
+            configuration
+            encourage une communication fluide et dynamique entre les membres de l'équipe, tout en réduisant les
+            barrières
+            hiérarchiques et en favorisant une atmosphère de travail conviviale.
+          </p>
+          <p>
+            Tous les membres du service informatique utilisent Mac OS X et l'<span (click)="openSidenav('IDE')"
+                                                                                   class="link">IDE</span> <span
+            (click)="openSidenav('IntelliJ')" class="link">IntelliJ</span>, ce qui assure une uniformité
+            dans
+            les outils de travail. Pendant mon stage, j'ai travaillé sur un MacBook Pro équipé de la version Ultimate
+            d'IntelliJ, qui est la version complète offrant des fonctionnalités supplémentaires. J'ai également eu accès
+            à
+            divers serveurs de test et de préproduction, me permettant de déployer les applications développées dans des
+            environnements réalistes.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div>
-    <h3 class="title title_l">Aspect technique</h3>
-    <div class="text">
-      <p>
-        EuroDNS a opté pour un environnement de travail en open space pour son équipe informatique. Cette configuration
-        encourage une communication fluide et dynamique entre les membres de l'équipe, tout en réduisant les barrières
-        hiérarchiques et en favorisant une atmosphère de travail conviviale.
-      </p>
-      <p>
-        Tous les membres du service informatique utilisent Mac OS X et l'IDE* IntelliJ, ce qui assure une uniformité
-        dans
-        les outils de travail. Pendant mon stage, j'ai travaillé sur un MacBook Pro équipé de la version Ultimate
-        d'IntelliJ, qui est la version complète offrant des fonctionnalités supplémentaires. J'ai également eu accès à
-        divers serveurs de test et de préproduction, me permettant de déployer les applications développées dans des
-        environnements réalistes.
-      </p>
-    </div>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

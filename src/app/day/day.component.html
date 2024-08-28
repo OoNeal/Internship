@@ -1,40 +1,66 @@
-<div id="day" class="day margin">
-  <h1 class="title title_xxl">Une Journée Type au sein de l’Équipe de Développement d’EuroDNS</h1>
-  <div class="text">
-    <p>La journée de travail commence par l’établissement de la connexion au réseau de l’entreprise. Pour accéder aux
-      outils clés comme Jira et Gerrit, une connexion VPN est nécessaire. Le VPN garantit que toutes les communications
-      et données échangées restent sécurisées, protégeant ainsi l’intégrité des informations de l’entreprise et de ses
-      clients. De plus, pour tous les appels HTTP, cette connexion sécurisé est nécessaire car un proxy est utilisé,
-      ajoutant une couche supplémentaire de sécurité et permettant un contrôle plus précis du trafic réseau. Une fois
-      connecté, chaque développeur entame sa journée par la vérification des différentes revues de code disponibles sur
-      Gerrit.
-    </p>
-    <p>
-      Après les revues de code, l’attention se porte sur les tâches en cours dans Jira. Les développeurs vérifient
-      l’état de leurs tâches, mettent à jour les progrès réalisés et le statut de leurs projets. Cette étape est
-      essentielle pour s’assurer que tout le monde travaille sur les bonnes priorités et que les projets avancent selon
-      le calendrier prévu.
-    </p>
-  </div>
-  <div class="screen">
-    <img src="assets/images/gerrit.jpg" alt="gerrit dashboard" class="screen_image">
-    <p class="screen_caption">Tableau de bord de l’application Gerrit</p>
-  </div>
-  <div class="text">
-    <p>
-      À 14h30, l’équipe se réunit pour le "daily", une réunion courte mais essentielle dans la méthodologie Scrum.
-      Durant cette réunion, chaque membre de l’équipe partage les progrès de la journée, les obstacles rencontrés, et
-      les objectifs pour le reste de la journée. Cette réunion permet de maintenir tout le monde informé des
-      développements et de s’assurer que chacun est aligné sur les priorités du sprint en cours. Le Scrum Master
-      facilite la réunion, en veillant à ce que chaque membre ait la possibilité de s’exprimer et que les problèmes
-      soient abordés rapidement.
-    </p>
-    <p>
-      Après la réunion, les développeurs retournent à leurs tâches, poursuivant le développement, les tests et la
-      documentation. La méthodologie Scrum encourage une approche itérative et collaborative, où chaque membre de
-      l’équipe peut demander de l’aide ou proposer des améliorations à tout moment. La journée se poursuit ainsi, avec
-      des périodes de concentration intense sur le code entrecoupées de courtes réunions et de discussions informelles
-      avec les collègues pour résoudre les problèmes et partager les connaissances.
-    </p>
-  </div>
-</div>
+<mat-sidenav-container class="">
+  <mat-sidenav #sidenav class="sidenav" mode="side" position="end" opened="{{opened}}">
+    <mat-nav-list>
+      <a mat-list-item (click)="closeSidenav()">
+        <mat-icon color="warn">close</mat-icon>
+      </a>
+      <div class="sidenav_content">
+        <span class="sidenav_content_name title title_xl">{{ selectedTech?.name }}</span>
+        <p class="text padding">{{ selectedTech?.description }}</p>
+        <a href="{{ selectedTech?.link }}" target="_blank" class="link">En savoir plus</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div id="day" class="day margin">
+      <h1 class="title title_xxl">Une Journée Type au sein de l’Équipe de Développement d’EuroDNS</h1>
+      <div class="text">
+        <p>La journée de travail commence par l’établissement de la connexion au réseau de l’entreprise. Pour accéder
+          aux
+          outils clés comme Jira et Gerrit, une connexion VPN est nécessaire. Le VPN garantit que toutes les
+          communications
+          et données échangées restent sécurisées, protégeant ainsi l’intégrité des informations de l’entreprise et de
+          ses
+          clients. De plus, pour tous les appels <span (click)="openSidenav('HTTP')" class="link">HTTP</span>, cette connexion sécurisé est nécessaire car un proxy est utilisé,
+          ajoutant une couche supplémentaire de sécurité et permettant un contrôle plus précis du trafic réseau. Une
+          fois
+          connecté, chaque développeur entame sa journée par la vérification des différentes revues de code disponibles
+          sur
+          Gerrit.
+        </p>
+        <p>
+          Après les revues de code, l’attention se porte sur les tâches en cours dans Jira. Les développeurs vérifient
+          l’état de leurs tâches, mettent à jour les progrès réalisés et le statut de leurs projets. Cette étape est
+          essentielle pour s’assurer que tout le monde travaille sur les bonnes priorités et que les projets avancent
+          selon
+          le calendrier prévu.
+        </p>
+      </div>
+      <div class="screen">
+        <img src="assets/images/gerrit.jpg" alt="gerrit dashboard" class="screen_image">
+        <p class="screen_caption">Tableau de bord de l’application Gerrit</p>
+      </div>
+      <div class="text">
+        <p>
+          À 14h30, l’équipe se réunit pour le "daily", une réunion courte mais essentielle dans la méthodologie Scrum.
+          Durant cette réunion, chaque membre de l’équipe partage les progrès de la journée, les obstacles rencontrés,
+          et
+          les objectifs pour le reste de la journée. Cette réunion permet de maintenir tout le monde informé des
+          développements et de s’assurer que chacun est aligné sur les priorités du sprint en cours. Le Scrum Master
+          facilite la réunion, en veillant à ce que chaque membre ait la possibilité de s’exprimer et que les problèmes
+          soient abordés rapidement.
+        </p>
+        <p>
+          Après la réunion, les développeurs retournent à leurs tâches, poursuivant le développement, les tests et la
+          documentation. La méthodologie Scrum encourage une approche itérative et collaborative, où chaque membre de
+          l’équipe peut demander de l’aide ou proposer des améliorations à tout moment. La journée se poursuit ainsi,
+          avec
+          des périodes de concentration intense sur le code entrecoupées de courtes réunions et de discussions
+          informelles
+          avec les collègues pour résoudre les problèmes et partager les connaissances.
+        </p>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
