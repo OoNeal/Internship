@@ -7,7 +7,7 @@
       <div class="sidenav_content">
         <span class="sidenav_content_name title title_xl">{{ selectedTech?.name }}</span>
         <p class="text padding">{{ selectedTech?.description }}</p>
-        <a href="{{ selectedTech?.link }}" target="_blank" class="link">En savoir plus</a>
+        <a href="{{ selectedTech?.link }}" target="_blank" class="link_discover">En savoir plus</a>
       </div>
     </mat-nav-list>
   </mat-sidenav>
@@ -22,7 +22,7 @@
           communications
           et données échangées restent sécurisées, protégeant ainsi l’intégrité des informations de l’entreprise et de
           ses
-          clients. De plus, pour tous les appels <span (click)="openSidenav('HTTP')" class="link">HTTP</span>, cette connexion sécurisé est nécessaire car un proxy est utilisé,
+          clients. De plus, pour tous les appels <span (click)="openSidenav('HTTP')" class=link_discover>HTTP</span>, cette connexion sécurisé est nécessaire car un proxy est utilisé,
           ajoutant une couche supplémentaire de sécurité et permettant un contrôle plus précis du trafic réseau. Une
           fois
           connecté, chaque développeur entame sa journée par la vérification des différentes revues de code disponibles

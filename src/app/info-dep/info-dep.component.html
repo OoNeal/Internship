@@ -7,7 +7,7 @@
       <div class="sidenav_content">
         <span class="sidenav_content_name title title_xl">{{ selectedTech?.name }}</span>
         <p class="text padding">{{ selectedTech?.description }}</p>
-        <a href="{{ selectedTech?.link }}" target="_blank" class="link">En savoir plus</a>
+        <a href="{{ selectedTech?.link }}" target="_blank" class="link_discover">En savoir plus</a>
       </div>
     </mat-nav-list>
   </mat-sidenav>
@@ -48,8 +48,8 @@
           </p>
           <p>
             Tous les membres du service informatique utilisent Mac OS X et l'<span (click)="openSidenav('IDE')"
-                                                                                   class="link">IDE</span> <span
-            (click)="openSidenav('IntelliJ')" class="link">IntelliJ</span>, ce qui assure une uniformité
+                                                                                   class=link_discover>IDE</span> <span
+            (click)="openSidenav('IntelliJ')" class=link_discover>IntelliJ</span>, ce qui assure une uniformité
             dans
             les outils de travail. Pendant mon stage, j'ai travaillé sur un MacBook Pro équipé de la version Ultimate
             d'IntelliJ, qui est la version complète offrant des fonctionnalités supplémentaires. J'ai également eu accès

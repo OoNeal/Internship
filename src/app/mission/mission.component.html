@@ -7,7 +7,7 @@
       <div class="sidenav_content">
         <span class="sidenav_content_name title title_xl">{{ selectedTech?.name }}</span>
         <p class="text padding">{{ selectedTech?.description }}</p>
-        <a href="{{ selectedTech?.link }}" target="_blank" class="link">En savoir plus</a>
+        <a href="{{ selectedTech?.link }}" target="_blank" class="link_discover">En savoir plus</a>
       </div>
     </mat-nav-list>
   </mat-sidenav>
@@ -22,7 +22,7 @@
             EuroDNS, en tant qu'entreprise pionnière dans la gestion de noms de domaine, veille à ce que ses
             plateformes en ligne restent à la pointe de la technologie. Dans ce cadre, une décision stratégique a été
             prise
-            pour migrer l’ensemble de leur site web vers le <span class="link" (click)="openSidenav('Framework')">framework</span>
+            pour migrer l’ensemble de leur site web vers le <span class=link_discover (click)="openSidenav('Framework')">framework</span>
             Angular. Ce processus de migration s’est déroulé en
             deux
             phases principales : d’abord une mise à jour vers Angular 14, suivie par une seconde mise à jour vers

@@ -7,7 +7,7 @@
       <div class="sidenav_content">
         <span class="sidenav_content_name title title_xl">{{ selectedTech?.name }}</span>
         <p class="text padding">{{ selectedTech?.description }}</p>
-        <a href="{{ selectedTech?.link }}" target="_blank" class="link">En savoir plus</a>
+        <a href="{{ selectedTech?.link }}" target="_blank" class="link_discover">En savoir plus</a>
       </div>
     </mat-nav-list>
   </mat-sidenav>
@@ -87,11 +87,11 @@
 
             <h3 class="bold">Dossier Fixtures</h3>
             <div class="text">
-              <p>Ce dossier contient des fichiers de données statiques au format <span class="link"
+              <p>Ce dossier contient des fichiers de données statiques au format <span class=link_discover
                                                                                        (click)="openSidenav('JSON')">JSON</span>
                 ou autres formats, utilisés
                 pour simuler
-                des réponses de l'<span class="link" (click)="openSidenav('API')">API</span> ou pour fournir des données
+                des réponses de l'<span class=link_discover (click)="openSidenav('API')">API</span> ou pour fournir des données
                 constantes aux tests.
               </p>
             </div>
